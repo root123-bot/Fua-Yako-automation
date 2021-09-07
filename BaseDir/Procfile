@@ -1,0 +1,1 @@
+web: gunicorn laundryManagementSystem.wsgi --log-file -

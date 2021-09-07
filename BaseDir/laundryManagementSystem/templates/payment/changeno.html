@@ -1,0 +1,41 @@
+{% extends 'base0.html' %}
+
+{% block js %}
+<script type="text/javascript">
+    function preback() {window.history.forward();}
+    setTimeout("preback()", 0);
+    window.onunload=function() {null};
+</script>
+{% endblock js %}
+
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} m-2" id = "msg" role="alert">
+            <div class="text-center" style="background-color: #f7a072; margin-left: 0px; margin-right: 0px;"> {{ message }} </div>
+        </div>
+    {% endfor %}
+{% endif %}
+  <div class="container">
+        <div class="">
+          <br><legend> The  number for your payment is <span class="text-danger">{{accNo}}</span>, if you typed wrong and you want to change it then fill the input box below then click use this number button to change it, otherwise if its good then click the finish button to pay</legend><hr>
+            
+        </div><br>  
+        <form method ="POST" action ="{% url 'changed' %}">
+            {% csrf_token %}
+            <div class="row" style="margin-left: 50px;">
+                <div class="col-md-4 d-inline">
+                    <input type="number" value="{{accNo}}" class="form-control" style="margin-bottom: 10px;" name="changeNo" maxlength="10">
+                </div>
+                <div class="col-md-4 d-inline">
+                    <input type="submit" class="btn btn-outline-success" value="use this number">       
+                </div>
+            </div><br><hr>
+        </form>
+        <div><br>
+            <legend>Everything is good? If yes finish the payment by clicking the  button below</legend>
+            <a href="{% url 'finishHim' %}" class="btn btn-outline-primary" style="margin-bottom: 10px;">Finish and pay</a>
+        </div>
+  </div>
+{% endblock content %}

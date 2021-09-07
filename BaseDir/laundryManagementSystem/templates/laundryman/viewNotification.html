@@ -1,0 +1,130 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>view order</title>
+    <link rel="stylesheet" href="{% static 'company/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'company/css/stylemain.css' %}">
+    <script src="https://kit.fontawesome.com/a45f84b068.js" crossorigin="anonymous"></script>
+</head>
+<body >
+   <div class="container bg-light">
+     <div class="row my-5">
+       <div class="col-2"></div>
+        <div class="col-8 text-center ">
+
+<table class="table table-light table-bordered" id="fom">
+           <h2 class="text-warning">MY ORDER</h2>
+  <h4 class="text-secondary font-weight-bold text-left mt-4">
+    order from your customer</h4>
+  
+      
+  <tbody>
+    {% if mode != 'Pick at station' %}
+    <tr>
+      <td scope="row" class="font-weight-bold">Clothes/Shoes categories</td>
+      <td colspan="2">{{items}}</td>
+    </tr>
+    <tr>
+      <td scope="row" class="font-weight-bold">Total clothes/Shoes</td>
+      <td colspan="2">{{sum}}</td>
+    </tr>
+    <tr>
+      <td scope="row" class="font-weight-bold">Staring Date</td>
+      <td colspan="2">{{start}}</td>
+    </tr>
+    <tr>
+      <td scope="row" class="font-weight-bold">Finish Date</td>
+      <td colspan="3">{{end}}</td>
+    </tr>
+    <tr>
+      <td scope="row" class="font-weight-bold">Mode of delivery</td>
+      <td colspan="3">{{mode}}</td>
+    </tr>
+    <tr>
+      <td scope="row" class="font-weight-bold">Physical Address</td>
+      <td colspan="2">{{district}}, {{ward}} {{street}}</td>
+    </tr>
+    <tr>
+      <tr>
+      <td scope="row" class="font-weight-bold">Phone Number</td>
+      <td colspan="2">0{{phone}}</td>
+    </tr>
+    <tr>
+      <tr>
+      <td scope="row" class="font-weight-bold">Zipcode</td>
+      <td colspan="2">{{zipcode}}</td>
+    </tr>
+    <tr>
+      <tr>
+      <td scope="row" class="font-weight-bold">Total amount payed</td>
+      <td colspan="2" class="text-success font-weight-bold">Tshs {{total}}</td>
+    </tr>
+    <tr>
+      <tr>
+      <td scope="row" class="font-weight-bold">Your allocated amount</td>
+      <td colspan="2" class="text-danger font-weight-bold">Tshs {{amountPayed}}</td>
+    </tr>
+    
+    {% else %}
+    <tr>
+      <td scope="row" class="font-weight-bold">Clothes/Shoes categories</td>
+      <td colspan="2">{{items}}</td>
+    </tr>
+    <tr>
+      <td scope="row" class="font-weight-bold">Total clothes/Shoes</td>
+      <td colspan="2">{{sum}}</td>
+    </tr>
+    <tr>
+      <td scope="row" class="font-weight-bold">Staring Date</td>
+      <td colspan="2">{{start}}</td>
+    </tr>
+    <tr>
+      <td scope="row" class="font-weight-bold">Finish Date</td>
+      <td colspan="3">{{end}}</td>
+    </tr>
+    <tr>
+      <td scope="row" class="font-weight-bold">Mode of delivery</td>
+      <td colspan="3">{{mode}}</td>
+    </tr>
+    <tr>
+      <tr>
+      <td scope="row" class="font-weight-bold">Phone Number</td>
+      <td colspan="2">0{{phone}}</td>
+    </tr>
+    <tr>
+      <tr>
+      <td scope="row" class="font-weight-bold">Zipcode</td>
+      <td colspan="2">{{zipcode}}</td>
+    </tr>
+    <tr>
+      <tr>
+      <td scope="row" class="font-weight-bold">Total amount payed</td>
+      <td colspan="2" class="text-success font-weight-bold">Tshs {{total}}</td>
+    </tr>
+    <tr>
+      <tr>
+      <td scope="row" class="font-weight-bold">Your allocated amount</td>
+      <td colspan="2" class="text-danger font-weight-bold">Tshs {{amountPayed}}</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+  <a href="{% url 'lauNotification' %}" class="btn btn-warning align-items-left">Go back</a>
+         
+     </div>
+     <div class="col-2"></div>
+   </div>
+
+    <!--bootstrap script js-->
+      <script src="{% static 'company/js/jcquery.min.js' %}"></script>
+
+    <!--
+    <script src="./js/jquery-3.5.1.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    -->
+</body>
+</html>
